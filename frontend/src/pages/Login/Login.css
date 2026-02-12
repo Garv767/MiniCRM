@@ -1,0 +1,72 @@
+/* Login.css */
+.login-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0f172a; /* Navy Background */
+  margin: 0;
+}
+
+.login-card {
+  background: #1e293b; /* Slate Card */
+  padding: 3rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 350px;
+  border: 1px solid #334155;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.login-card h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #ffffff;
+  font-weight: 700;
+  font-family: sans-serif;
+}
+
+/* This is the container for each input */
+.input-group {
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+/* This styles the actual input boxes */
+.form-input {
+  width: 100%;
+  padding: 0.85rem;
+  background-color: #0f172a; /* Navy to match the background */
+  border: 1px solid #334155;
+  border-radius: 8px;
+  color: #f8fafc;
+  font-size: 1rem;
+  box-sizing: border-box; /* Critical for keeping width contained */
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  border-color: #3b82f6;
+  background-color: #1e293b;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+.login-button {
+  width: 100%;
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.85rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.2s ease;
+}
+
+.login-button:hover {
+  background-color: #2563eb;
+  transform: translateY(-1px);
+}

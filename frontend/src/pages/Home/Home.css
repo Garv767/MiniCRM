@@ -1,0 +1,55 @@
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0f172a; /* Consistent Navy Background */
+  padding: 20px;
+}
+
+.home-card {
+  background: #1e293b; /* Slate Gray Card */
+  padding: 2.5rem;
+  border-radius: 16px;
+  border: 1px solid #334155;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 400px;
+}
+
+.home-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #f8fafc;
+  text-align: center;
+}
+
+.home-input, .home-textarea {
+  width: 100%;
+  padding: 0.85rem;
+  margin-bottom: 1.25rem;
+  background-color: #0f172a; /* Contrast input */
+  border: 1px solid #334155;
+  border-radius: 8px;
+  color: #f8fafc;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.home-button {
+  width: 100%;
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.85rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.home-button:hover {
+  background-color: #2563eb;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+}
