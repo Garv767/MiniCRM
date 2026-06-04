@@ -1,0 +1,52 @@
+name: MongoDB Keep Alive
+
+on:
+  schedule:
+    # Run every day at 00:00 UTC to keep the database active
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allows manual triggering from the GitHub Actions tab
+
+jobs:
+  ping-db:
+    runs-on: ubuntu-latest
+    environment: MiniCRM
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install MongoDB Driver
+        run: npm install mongodb
+
+      - name: Ping MongoDB Database
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URI || vars.MONGO_URI }}
+        run: |
+          node -e "
+            const { MongoClient } = require('mongodb');
+            if (!process.env.MONGO_URI) {
+              console.error('Error: MONGO_URI is not set.');
+              process.exit(1);
+            }
+            const client = new MongoClient(process.env.MONGO_URI);
+            async function run() {
+              try {
+                await client.connect();
+                const db = client.db('keep_alive_db');
+                const collection = db.collection('keep_alive');
+                const result = await collection.updateOne(
+                  { id: 1 },
+                  { \$set: { last_ping: new Date().toISOString() + ' (MiniCRM)' } },
+                  { upsert: true }
+                );
+                console.log('✅ MongoDB Keep Alive Successful:', result);
+              } catch (err) {
+                console.error('❌ MongoDB Keep Alive Failed:', err);
+                process.exit(1);
+              } finally {
+                await client.close();
+              }
+            }
+            run();
+          "
